@@ -1,0 +1,38 @@
+dicrart/
+
+│── index.html        → Página principal
+
+│── about.html        → Quiénes somos (Misión, Visión)
+
+│── programs.html     → Programas y talleres
+
+│── success.html      → Casos de éxito
+
+│── contact.html      → Contacto
+
+│── assets/
+
+│    ├── css/
+│    │    └── style.css
+
+:root {
+  --naranja-brillante: #F6B234;
+  --rojo-intenso: #EF501D;
+  --verde-lima-cian-oscuro: #118F33;
+  --verde-fuerte: #013220;
+  --rojo-fuerte: #C01922;
+  --rojo-vivo: #E0121A;
+  --azul-fuerte: #1A70B5;
+  --azul-oscuro-moderado: #2B327C;
+  --amarillo-vivo: #FAE91E;
+  --amarillo: #FBC418;
+  --azul-desaturado-muy-oscuro: #2B275C;
+}
+
+
+
+│    ├── js/
+│    │    └── script.js
+
+│    └── img/
+│         └── (logos, fotos)
