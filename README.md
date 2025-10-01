@@ -9,7 +9,7 @@ La **Corporación Dicrart** es una **ONG sin ánimo de lucro** dedicada a la for
 ---
 
 ## 🚀 Demo en línea
-👉 [Abrir sitio en GitHub Pages](https://github.com/CorpoDicrart/dicrartweb.git)
+👉 [Abrir sitio en GitHub Pages][https://corpodicrart.github.io/dicrartweb/]
 
 ---
 
