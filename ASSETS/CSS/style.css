@@ -1,89 +1,64 @@
 /* =======================================================
-   ESTRUCTURA CSS3 BASE
-   Hoja de estilos modular y con enfoque en la escalabilidad.
-   ======================================================= */
+  CSS3 BASE STRUCTURE
+  Modular, scalable, and maintainable stylesheet.
+  ======================================================= */
 
 /* ==============================
-    VARIABLES Y RESET (ESTILOS GENERALES)
-   ============================== */
+  1. VARIABLES & RESET
+  ============================== */
 
+/* --- 1.1 CSS Variables --- */
 :root {
-  /* --- A. Colores Base --- */
+  /* Colors */
   --primary-color: #0056b3;
-  /* Azul institucional: Confianza, seriedad */
   --secondary-color: #ff6f61;
-  /* Naranja/rojo acento: Energía, llamado a la acción */
   --accent-color: #2ecc71;
-  /* Verde complemento */
-
-  /* Variables de Sombra y Borde */
-  --light-border: #eee;
-  --border-color: #ddd;
-
-  /* --- B. Colores Funcionales --- */
   --white-color: #fff;
   --dark-color: #222;
-  /* Texto principal/fondo oscuro */
   --heading-color: var(--dark-color);
-  /* Alias para títulos */
   --text-color: #444;
-  /* Texto general del cuerpo */
   --text-muted: #777;
-  /* Texto secundario (gris) */
   --light-gray-color: #f7f7f7;
-  /* Fondo para secciones alternas (más claro que f9f9f9) */
+  --border-color: #ddd;
+  --light-border: #eee;
 
-  /* --- C. Variables de Tipografía --- */
+  /* Typography */
   --font-title: "Montserrat", sans-serif;
   --font-body: "Open Sans", sans-serif;
 
-  /* --- D. Variables de Layout y Espaciado --- */
+  /* Layout & Spacing */
   --max-width: 1200px;
   --section-padding: 4rem;
-  /* Padding vertical por defecto para secciones */
-
   --spacing-lg: 3rem;
-  /* Grande: separación de bloques */
   --spacing-md: 1.5rem;
-  /* Medio: margen de títulos y grupos */
   --spacing-sm: 0.75rem;
-  /* Pequeño: margen de listas y botones */
   --spacing-xs: 0.25rem;
-  /* Extra Pequeño */
 
-  /* --- E. Variables de Componentes --- */
+  /* Components */
   --border-radius-lg: 10px;
-  /* Radio de tarjetas/secciones */
   --border-radius-sm: 6px;
-  /* Radio de inputs/botones */
   --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
-/* ------------------------------------- */
-/* Reset Básico */
-/* ------------------------------------- */
+/* --- 1.2 Reset --- */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* Modelo de caja universal */
-  /* Aseguramos que la tipografía herede bien en todos los elementos */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ------------------------------------- */
-/* Estilos de Tipografía y Contenedor */
-/* ------------------------------------- */
+/* ==============================
+  2. TYPOGRAPHY & CONTAINER
+  ============================== */
 html {
   font-size: 16px;
-  /* Base rem/em */
   scroll-behavior: smooth;
 }
 
 body {
   font-family: var(--font-body);
-  /* Usamos --text-color para el cuerpo general */
   color: var(--text-color);
   background-color: var(--white-color);
   line-height: 1.6;
@@ -94,26 +69,22 @@ body {
   width: 90%;
   max-width: var(--max-width);
   margin: 0 auto;
-  /* Añadimos padding horizontal para móviles cuando se usa fuera de secciones */
   padding: 0 var(--spacing-sm);
 }
 
-/* Encabezados */
+/* --- 2.1 Headings --- */
 h1,
 h2,
 h3,
 h4 {
   font-family: var(--font-title);
-  /* Usamos el alias para títulos */
   color: var(--heading-color);
   line-height: 1.2;
   font-weight: 700;
-  /* Aseguramos peso fuerte en los títulos */
 }
 
 h1 {
   font-size: 3.5rem;
-  /* Tamaño base más grande para h1 */
 }
 
 h2 {
@@ -127,14 +98,12 @@ h3 {
 }
 
 p {
-  /* Usamos --text-color para el texto del cuerpo */
   color: var(--text-color);
   font-size: 1rem;
   margin-bottom: var(--spacing-md);
-  /* Aumentamos a MD para mejor separación de párrafos */
 }
 
-/* Enlaces base */
+/* --- 2.2 Links --- */
 a {
   text-decoration: none;
   color: var(--primary-color);
@@ -146,86 +115,67 @@ a:hover {
 }
 
 /* ==============================
-   ACCESIBILIDAD Y FOCO (FOCUS)
-   ============================== */
-
-/* Mejora visible y consistente del estado de enfoque para todos los elementos interactivos */
+  3. ACCESSIBILITY & FOCUS
+  ============================== */
 button:focus:not(:focus-visible),
-/* Ignora el foco del mouse si es posible */
 input:focus,
 textarea:focus,
 select:focus,
 a:focus,
 .btn:focus {
-  /* Define un contorno de color primario */
   outline: 2px solid var(--primary-color);
-  /* Separa el contorno del elemento */
   outline-offset: 3px;
-  /* Sombra usando la variable RGB del color primario (si está definida) */
-  box-shadow: 0 0 0 4px rgba(var(--primary-rgb, 0, 86, 179), 0.2);
+  box-shadow: 0 0 0 4px rgba(0, 86, 179, 0.2);
 }
 
-/* Para elementos que tienen un contenedor interactivo (como una tarjeta) */
 .team-member:focus-within {
   outline: 2px solid var(--primary-color);
   outline-offset: 4px;
-  /* Sombra usando la variable RGB para consistencia */
-  box-shadow: 0 0 0 6px rgba(var(--primary-rgb, 0, 86, 179), 0.3);
+  box-shadow: 0 0 0 6px rgba(0, 86, 179, 0.3);
 }
 
 /* ==============================
-       BOTONES (BTN)
-   ============================== */
-
-/* --- A. ESTILO BASE --- */
+  4. BUTTONS
+  ============================== */
 .btn {
   display: inline-block;
-  padding: var(--btn-padding, 0.75rem 1.5rem);
-  /* Uso de variable para padding */
-  border-radius: var(--border-radius-sm, 6px);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius-sm);
   font-weight: 600;
   text-decoration: none;
   cursor: pointer;
-  /* Usamos una variable para el grosor del borde */
-  border: var(--btn-border-width, 2px) solid transparent;
+  border: 2px solid transparent;
   transition: all 0.3s ease;
   text-align: center;
   line-height: 1.2;
-  /* Asegura que el texto esté bien centrado verticalmente */
 }
 
-/* --- B. ESTILO PRIMARIO (Relleno) --- */
 .btn-primary {
   background: var(--primary-color);
-  color: var(--white-color, #fff);
+  color: var(--white-color);
   border-color: var(--primary-color);
 }
 
 .btn-primary:hover {
-  /* Usamos una variable o un color más oscuro derivado de la variable primary */
-  background: var(--primary-dark, #00418a);
-  border-color: var(--primary-dark, #00418a);
+  background: #00418a;
+  border-color: #00418a;
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  /* Sombra para efecto de levantamiento */
 }
 
-/* --- C. ESTILO SECUNDARIO (Relleno) --- */
 .btn-secondary {
   background: var(--secondary-color);
-  color: var(--white-color, #fff);
+  color: var(--white-color);
   border-color: var(--secondary-color);
 }
 
 .btn-secondary:hover {
-  /* Usamos una variable o un color más oscuro derivado de la variable secondary */
-  background: var(--secondary-dark, #e85c50);
-  border-color: var(--secondary-dark, #e85c50);
+  background: #e85c50;
+  border-color: #e85c50;
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* --- D. ESTILO OUTLINE (Contorno) --- */
 .btn-primary-outline {
   border-color: var(--primary-color);
   color: var(--primary-color);
@@ -234,67 +184,52 @@ a:focus,
 
 .btn-primary-outline:hover {
   background: var(--primary-color);
-  color: var(--white-color, #fff);
+  color: var(--white-color);
   border-color: var(--primary-color);
-  /* Mantenemos el borde para evitar 'saltos' */
   transform: translateY(-2px);
 }
 
-/* --- E. MODIFICADOR DE TAMAÑO --- */
 .btn-large {
   padding: 1rem 2rem;
   font-size: 1.1rem;
 }
 
 /* ==============================
-     NAVEGACIÓN Y HEADER
-   ============================== */
+  5. HEADER & NAVIGATION
+  ============================== */
 .main-header {
-  background: var(--white-color, #fff);
-  /* Usamos la variable de borde claro para consistencia */
-  border-bottom: 1px solid var(--light-border, #eee);
+  background: var(--white-color);
+  border-bottom: 1px solid var(--light-border);
   position: sticky;
   top: 0;
-  /* Un z-index alto para asegurar que el header esté siempre visible */
   z-index: 1000;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  /* Sombra sutil para levantarlo visualmente */
   width: 100%;
-  /* Asegura que ocupe todo el ancho disponible */
 }
 
-/* Contenido dentro del header (alineación del logo, nav y botones) */
 .header-content {
-  /* Usamos un max-width consistente, idealmente dentro de un .container en el HTML */
-  max-width: var(--container-width, 1200px);
+  max-width: var(--max-width);
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* Usamos la variable de padding vertical (header-padding-y) y padding lateral (padding-x) */
-  padding: var(--header-padding-y, 1rem) var(--padding-x, 1rem);
+  padding: 1rem 1rem;
 }
 
-/* Estilo del Logo */
 .logo {
   display: flex;
   align-items: center;
-  /* Evitamos que el logo se colapse con el nav al reducir el tamaño */
   flex-shrink: 0;
 }
 
 .logo img {
-  height: var(--logo-height, 50px);
+  height: 50px;
   transition: height 0.3s ease;
   display: block;
-  /* Elimina cualquier espacio residual que pueda tener la imagen */
 }
 
-/* Contenedor de la navegación principal */
 .main-nav {
-  /* Permite que el nav ocupe el espacio disponible en el centro */
   flex-grow: 1;
-  /* Asegura que el nav-list se centre o se alinee correctamente */
   display: flex;
   justify-content: center;
 }
@@ -302,22 +237,18 @@ a:focus,
 .main-nav .nav-list {
   list-style: none;
   display: flex;
-  /* Usamos la variable de espaciado para la separación entre enlaces */
-  gap: var(--spacing-md, 1.5rem);
+  gap: var(--spacing-md);
   padding: 0;
   margin: 0;
 }
 
-/* Estilo de los enlaces */
 .main-nav a {
-  color: var(--dark-color, #333);
+  color: var(--dark-color);
   font-weight: 600;
   text-decoration: none;
   padding: 0.5rem 0;
-  /* Aumentamos ligeramente el padding vertical para el área de clic */
   transition: color 0.3s ease;
   display: inline-block;
-  /* NECESARIO para que el padding vertical funcione correctamente */
 }
 
 .main-nav a:hover,
@@ -325,70 +256,51 @@ a:focus,
   color: var(--primary-color);
 }
 
-/* Botón de Hamburguesa (Solo visible en móviles) */
 .menu-toggle {
   display: none;
   font-size: 1.5rem;
   background: none;
   border: none;
-  color: var(--dark-color, #333);
+  color: var(--dark-color);
   padding: 0.5rem;
   cursor: pointer;
   outline: none;
-  /* Asegura que esté en la capa superior para interactuar */
   z-index: 1001;
 }
 
 /* ==============================
-    LAYOUT DE SECCIONES
-   ============================== */
-/* --- A. ESTILO BASE DE SECCIONES --- */
+  6. SECTIONS & LAYOUT
+  ============================== */
 section {
-  /* Usa la variable de padding vertical (section-padding), y asegura padding lateral CERO */
-  padding: var(--section-padding, 4rem) 0;
+  padding: var(--section-padding) 0;
 }
 
-/* Fondo alterno para contraste, para secciones impares/pares */
 section:nth-child(even) {
-  /* Renombramos a light-gray-color para claridad */
-  background-color: var(--light-gray-color, #f7f7f7);
+  background-color: var(--light-gray-color);
 }
 
 section h2 {
   text-align: center;
-  /* Aumentamos el margen inferior del h2 */
-  margin-bottom: var(--spacing-md, 1.5rem);
-  /* Aseguramos que los títulos usen el color de heading */
-  color: var(--heading-color, #333);
+  margin-bottom: var(--spacing-md);
+  color: var(--heading-color);
 }
 
-/* Descripción que va justo debajo del título principal de la sección */
 .section-description {
   text-align: center;
   max-width: 700px;
-  /* Centrado y margen inferior consistente */
-  margin: 0 auto var(--spacing-lg, 3rem) auto;
-  /* Usa color atenuado para el subtítulo */
-  color: var(--text-muted, #777);
+  margin: 0 auto var(--spacing-lg) auto;
+  color: var(--text-muted);
   font-size: 1.1rem;
 }
 
-/* --- B. SECCIÓN HERO / BANNER --- */
-
+/* --- 6.1 Hero Section --- */
 .hero-section {
-  /* Aseguramos que el degradado y la imagen estén correctamente definidos */
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url("../img/hero-bg.webp");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../img/hero-bg.webp");
   background-position: center;
-  /* Posición de la imagen */
   background-size: cover;
-  /* Cobertura total */
   background-repeat: no-repeat;
-  /* No repetir */
-
-  color: var(--white-color, #fff);
+  color: var(--white-color);
   text-align: center;
-  /* Padding generoso para impacto visual */
   padding: 8rem 1rem;
   min-height: 50vh;
   display: flex;
@@ -397,124 +309,105 @@ section h2 {
 }
 
 .hero-content {
-  /* Contenedor para el contenido interno del hero */
   max-width: 900px;
 }
 
 .hero-section h1 {
-  /* Usa clamp() para mejor escalado responsivo */
   font-size: clamp(2.5rem, 6vw, 4rem);
   font-weight: 800;
-  margin-bottom: var(--spacing-md, 1.5rem);
-  color: var(--white-color, #fff);
+  margin-bottom: var(--spacing-md);
+  color: var(--white-color);
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .hero-section p {
   font-size: 1.25rem;
-  margin-bottom: var(--spacing-lg, 3rem);
-  /* Uso de RGBA con la variable White-RGB (asumiendo que está definida) */
-  color: rgba(var(--white-rgb, 255, 255, 255), 0.95);
+  margin-bottom: var(--spacing-lg);
+  color: rgba(255, 255, 255, 0.95);
 }
 
 .hero-actions {
   display: flex;
-  /* Aseguramos un gap consistente */
-  gap: var(--spacing-md, 1.5rem);
+  gap: var(--spacing-md);
   justify-content: center;
 }
 
-/* --- C. CLASES DE GRID DE UTILIDAD --- */
-
+/* --- 6.2 Grid Utilities --- */
 .grid-2-columns {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  /* Usamos un gap más grande para estas estructuras principales */
-  gap: var(--spacing-lg, 3rem);
+  gap: var(--spacing-lg);
   align-items: center;
 }
 
 .grid-3-columns {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  /* Usamos un gap más grande para estas estructuras principales */
-  gap: var(--spacing-lg, 3rem);
+  gap: var(--spacing-lg);
 }
 
 /* ==============================
-MÓDULOS DE CONTENIDO (FEATURES / CARDS / TEAM)
-   ============================== */
-
-/* --- A. CONTENEDORES DE GRID MODULARES (Aplicable a múltiples secciones) --- */
+  7. CONTENT MODULES
+  ============================== */
 .features-grid,
 .impact-metrics,
 .team-grid,
 .donation-options,
 .sponsor-logos {
   display: grid;
-  /* Diseño responsivo y flexible */
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--spacing-lg, 3rem);
-  /* Usamos un gap LG para espaciar grids */
-  margin-top: var(--spacing-lg, 3rem);
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
   align-items: stretch;
-  /* Asegura que todas las tarjetas tengan la misma altura */
 }
 
-/* --- B. ESTILO BASE DE CARD (Feature, Metric, Program, Donation) --- */
 .feature-item,
 .metric-item,
 .program-card,
 .donation-card {
-  background: var(--white-color, #fff);
-  border: 1px solid var(--border-color, #eee);
-  border-radius: var(--border-radius-lg, 10px);
+  background: var(--white-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
   padding: 2rem;
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: var(--shadow-sm, 0 4px 15px rgba(0, 0, 0, 0.05));
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: var(--shadow-sm);
   height: 100%;
-  /* Asegura que se estire con align-items: stretch */
 }
 
-/* Iconos de Cards */
 .feature-item i,
 .program-card i,
 .donation-card i {
   font-size: 2.5rem;
   color: var(--primary-color);
-  margin-bottom: var(--spacing-md, 1rem);
+  margin-bottom: var(--spacing-md);
 }
 
-/* Efecto Hover Genérico */
 .feature-item:hover,
 .metric-item:hover,
 .program-card:hover,
 .donation-card:hover {
   transform: translateY(-5px);
-  box-shadow: var(--shadow-medium, 0 8px 25px rgba(0, 0, 0, 0.1));
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
-/* ------------------------------------- */
-
-/* --- C. Sub-Sección: TESTIMONIOS --- */
+/* --- 7.1 Testimonials --- */
 .testimonials {
-  background: var(--light-gray-color, #f7f7f7);
-  /* Usamos el gris claro */
-  padding: var(--section-padding, 4rem 1rem);
+  background: var(--light-gray-color);
+  padding: var(--section-padding);
 }
 
 .testimonial-item {
-  background: var(--white-color, #fff);
-  border-radius: var(--border-radius-lg, 10px);
+  background: var(--white-color);
+  border-radius: var(--border-radius-lg);
   padding: 2rem;
-  box-shadow: var(--shadow-sm, 0 2px 10px rgba(0, 0, 0, 0.05));
+  box-shadow: var(--shadow-sm);
   text-align: center;
   font-style: italic;
 }
 
 .testimonial-item p {
-  color: var(--text-color, #555);
+  color: var(--text-color);
 }
 
 .testimonial-item h4 {
@@ -524,26 +417,20 @@ MÓDULOS DE CONTENIDO (FEATURES / CARDS / TEAM)
   font-weight: 600;
 }
 
-/* ------------------------------------- */
-
-/* --- D. Sub-Sección: OUR TEAM --- */
+/* --- 7.2 Team --- */
 .our-team {
-  background: var(--light-gray-color, #f7f7f7);
-  /* Fondo de la sección de equipo */
+  background: var(--light-gray-color);
 }
 
 .team-member {
-  /* HEREDA ESTILOS BASE DE CARD, pero se modifica */
-  background: var(--white-color, #fff);
+  background: var(--white-color);
   border: none;
-  /* Quitamos el borde para un look más limpio */
   padding: 0;
   text-align: center;
   overflow: hidden;
   position: relative;
-  box-shadow: var(--shadow-medium, 0 10px 30px rgba(0, 0, 0, 0.08));
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  /* Mantener la transición */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .member-image {
@@ -552,22 +439,17 @@ MÓDULOS DE CONTENIDO (FEATURES / CARDS / TEAM)
   height: 280px;
 }
 
-/* Pseudo-elemento para el gradiente oscuro al pasar el ratón */
 .member-image::before {
   content: "";
-  /* NECESARIO para que se muestre */
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: 1;
-  /* Coloca la capa sobre la imagen */
-  background: linear-gradient(to bottom,
-      transparent 60%,
-      rgba(34, 34, 34, 0.7));
+  background: linear-gradient(to bottom, transparent 60%, rgba(34, 34, 34, 0.7));
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s;
 }
 
 .team-member:hover .member-image::before {
@@ -578,24 +460,22 @@ MÓDULOS DE CONTENIDO (FEATURES / CARDS / TEAM)
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s;
 }
 
 .team-member:hover img {
   transform: scale(1.05);
-  /* Efecto zoom al pasar el ratón */
 }
 
 .member-info {
-  padding: var(--spacing-md, 25px) var(--spacing-sm, 20px);
+  padding: var(--spacing-md) var(--spacing-sm);
 }
 
 .team-member h4 {
-  /* Cambiado de h3 a h4 para consistencia con la jerarquía */
   color: var(--dark-color);
   margin: 0;
   font-size: 1.2rem;
-  transition: color 0.3s ease;
+  transition: color 0.3s;
 }
 
 .team-member:hover h4 {
@@ -604,175 +484,117 @@ MÓDULOS DE CONTENIDO (FEATURES / CARDS / TEAM)
 
 .member-role {
   display: block;
-  color: var(--text-muted, #777);
-  /* Usa variable para texto atenuado */
+  color: var(--text-muted);
   font-size: 0.9rem;
   margin-top: 0.25rem;
   position: relative;
   padding-bottom: 0.5rem;
 }
 
-/* Línea decorativa del rol al pasar el ratón */
 .member-role::after {
   content: "";
-  /* NECESARIO para la línea */
   display: block;
   width: 0;
-  /* Empieza invisible */
   height: 2px;
   margin: 0.25rem auto 0 auto;
   background: var(--primary-color);
-  /* Usamos primary-color para la línea */
-  transition: width 0.3s ease;
+  transition: width 0.3s;
 }
 
 .team-member:hover .member-role::after {
   width: 50%;
-  /* Se expande a la mitad del ancho de la tarjeta */
 }
 
-/* Efecto de borde superior (lo eliminamos del team-member base si ya tiene shadow y hover) */
-/* Si deseas un borde superior de color en lugar de shadow, descomenta esto:
-.team-member::before {
-    content: ''; 
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 5px;
-    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-    z-index: 10;
-}
-*/
 /* ==============================
-    FORMULARIO DE CONTACTO
-   ============================== */
-
-/* Limita el ancho del formulario y lo centra (usado cuando el formulario es una columna única) */
+  8. CONTACT FORM
+  ============================== */
 .contact-form {
   max-width: 600px;
   margin: 0 auto;
   padding: 0 1rem;
-  /* Añadimos padding lateral para móviles */
 }
 
-/* Espacio entre cada grupo de etiqueta y campo */
 .form-group {
-  margin-bottom: var(--spacing-md, 1.5rem);
-  /* Usamos la variable de espaciado */
+  margin-bottom: var(--spacing-md);
 }
 
 label {
   display: block;
-  margin-bottom: var(--spacing-sm, 0.5rem);
-  /* Usamos la variable de espaciado */
+  margin-bottom: var(--spacing-sm);
   font-weight: 600;
-  color: var(--dark-color, #333);
+  color: var(--dark-color);
 }
 
-/* Estilo para todos los campos de entrada (input, textarea) */
 input:not([type="submit"]),
-/* Evitamos aplicar estos estilos a los botones si los hay */
 textarea {
   width: 100%;
   padding: 0.75rem;
-  /* Usamos variables para el borde */
-  border: 1px solid var(--border-color, #ddd);
-  border-radius: var(--border-radius-sm, 6px);
-  /* Usamos variable de border-radius */
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
   font-family: inherit;
-  /* Usamos 'inherit' para asegurar consistencia de fuente con el body */
-  color: var(--dark-color, #333);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  /* Añadimos box-shadow a la transición */
+  color: var(--dark-color);
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 textarea {
   resize: vertical;
-  /* Permitimos al usuario redimensionar solo verticalmente */
 }
 
-/* Estado de Foco (cuando el usuario está escribiendo) */
 input:focus,
 textarea:focus {
   border-color: var(--primary-color);
-  /* Se recomienda mantener un box-shadow de enfoque para accesibilidad, 
-       incluso si el outline ya está definido globalmente. */
-  box-shadow: 0 0 0 3px rgba(var(--primary-rgb, 0, 94, 186), 0.2);
+  box-shadow: 0 0 0 3px rgba(0, 94, 186, 0.2);
   outline: none;
-  /* Quitamos el outline predeterminado del navegador */
 }
 
 /* ==============================
-             FOOTER
-   ============================== */
-
+  9. FOOTER
+  ============================== */
 .main-footer {
-  /* Fondo oscuro y texto blanco (usa variables) */
-  background: var(--dark-color, #1a1a1a);
-  color: var(--white-color, #fff);
-  /* Padding: 3rem arriba/abajo y 1rem en el bottom (antes del copyright) */
+  background: var(--dark-color);
+  color: var(--white-color);
   padding: 3rem 0 1rem;
 }
 
-/* Contenedor principal del contenido del footer (columnas) */
 .footer-content {
   display: grid;
-  /* Configuración de grid responsiva y flexible */
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: var(--spacing-lg, 3rem);
-  /* Aumentamos el gap a LG para mejor separación en desktop */
-
-  padding-bottom: var(--spacing-md, 1.5rem);
-  /* Separador: usa la variable de borde oscuro si está disponible */
-  border-bottom: 1px solid var(--dark-border-color, #444);
+  gap: var(--spacing-lg);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid #444;
 }
 
 .footer-section h3 {
   margin-bottom: 1rem;
-  /* Los títulos en el footer suelen ser blancos */
-  color: var(--white-color, #fff);
+  color: var(--white-color);
   font-weight: 600;
-  /* Aseguramos que el título sea visible */
 }
 
-/* Estilo para párrafos y enlaces dentro de las secciones */
 .footer-section p,
 .footer-section a {
-  /* Usa una variable de color gris claro/atenuado para texto secundario */
-  color: var(--text-muted-dark, #ccc);
+  color: #ccc;
   font-size: 0.9rem;
   text-decoration: none;
-  /* Aseguramos que no haya subrayado en los enlaces */
   display: block;
-  /* Hace que los enlaces de las listas ocupen su propia línea */
   margin-bottom: 0.5rem;
-  /* Pequeño margen para separar enlaces/párrafos */
 }
 
 .footer-section a:hover {
   color: var(--secondary-color);
-  /* Resalta con el color secundario */
 }
 
-/* Contenedor de íconos sociales */
 .social-links {
   display: flex;
   gap: 1rem;
-  /* Usa gap en lugar de margin-right en los 'a' para un espaciado más limpio */
-  margin-top: var(--spacing-sm, 0.5rem);
+  margin-top: var(--spacing-sm);
+  justify-content: flex-start;
 }
 
 .social-links a {
-  /* Eliminamos margin-right aquí porque usamos gap en el contenedor */
   color: var(--white-color);
   font-size: 1.4rem;
-  /* Aumentamos ligeramente el tamaño del ícono para visibilidad */
-  transition: color 0.3s ease, transform 0.3s ease;
-  /* Transición más limpia */
+  transition: color 0.3s, transform 0.3s;
   line-height: 1;
-  /* Ayuda a alinear el ícono */
-  margin-right: 0;
 }
 
 .social-links a:hover {
@@ -780,79 +602,60 @@ textarea:focus {
   transform: translateY(-2px);
 }
 
-/* Sección de Copyright */
 .footer-bottom {
   text-align: center;
   margin-top: 2rem;
   padding-top: 1rem;
   font-size: 0.8rem;
-  /* Usa una variable para el texto de copyright (más oscuro) */
-  color: var(--text-copyright, #aaa);
+  color: #aaa;
 }
 
 /* ==============================
-      UTILIDADES Y ANIMACIONES
-   ============================== */
-
-/* --- A. UTILIDADES DE POSICIÓN Y TEXTO --- */
-
-/* Centrado de texto */
+  10. UTILITIES & ANIMATIONS
+  ============================== */
+/* --- 10.1 Utilities --- */
 .text-center {
   text-align: center;
 }
 
-/* Espacio interno consistente para secciones (puede variar de tu CSS base) */
 .section-padding {
-  padding: var(--section-padding, 4rem 1rem);
+  padding: var(--section-padding);
 }
 
-/* --- B. UTILIDADES DE ESPACIADO (Spacing) --- */
-/* Definición de Variables (Asumiendo que las tienes en otro lado, ej: :root)
-   --spacing-sm: 0.5rem; (8px)
-   --spacing-md: 1.5rem; (24px)
-   --spacing-lg: 3rem; (48px)
-*/
-
-/* Margin Top (mt) */
 .mt-sm {
-  margin-top: var(--spacing-sm, 0.5rem);
+  margin-top: var(--spacing-sm);
 }
 
 .mt-md {
-  margin-top: var(--spacing-md, 1.5rem);
+  margin-top: var(--spacing-md);
 }
 
 .mt-lg {
-  margin-top: var(--spacing-lg, 3rem);
+  margin-top: var(--spacing-lg);
 }
 
-/* Margin Bottom (mb) */
 .mb-sm {
-  margin-bottom: var(--spacing-sm, 0.5rem);
+  margin-bottom: var(--spacing-sm);
 }
 
 .mb-md {
-  margin-bottom: var(--spacing-md, 1.5rem);
+  margin-bottom: var(--spacing-md);
 }
 
 .mb-lg {
-  margin-bottom: var(--spacing-lg, 3rem);
+  margin-bottom: var(--spacing-lg);
 }
 
-/* Padding Right (pr) y Padding Left (pl) (útil para alineación) */
 .px-md {
-  padding-left: var(--spacing-md, 1.5rem);
-  padding-right: var(--spacing-md, 1.5rem);
+  padding-left: var(--spacing-md);
+  padding-right: var(--spacing-md);
 }
 
-/* --- C. ANIMACIONES (MOTION) --- */
-
-/* 1. Animación General de Entrada (Usada con JS para elementos individuales) */
+/* --- 10.2 Animations --- */
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
   transition: all 0.6s ease-out;
-  /* Velocidad rápida para elementos */
 }
 
 .fade-in.appear {
@@ -860,12 +663,10 @@ textarea:focus {
   transform: translateY(0);
 }
 
-/* 2. Animación de Sección Completa (Usada con JS para bloques de contenido) */
 .section-animate.hidden {
   opacity: 0;
   transform: translateY(30px);
   transition: all 0.8s ease-out;
-  /* Velocidad ligeramente más lenta para secciones */
 }
 
 .section-animate.visible {
@@ -874,13 +675,11 @@ textarea:focus {
 }
 
 /* ==============================
-   MEDIA QUERIES (RESPONSIVE)
-   ============================== */
+  11. RESPONSIVE MEDIA QUERIES
+  ============================== */
 
-/* Pantallas Medianas (Tabletas y Escritorio pequeño) */
+/* --- 11.1 Tablets & Small Desktops --- */
 @media (max-width: 992px) {
-
-  /* Tipografía */
   h1 {
     font-size: 3rem;
   }
@@ -889,31 +688,35 @@ textarea:focus {
     font-size: 2rem;
   }
 
-  /* Espaciado de secciones */
   section {
-    padding: 3rem var(--padding-x, 1rem);
+    padding: 3rem 1rem;
   }
 
-  /* Usa variable de padding lateral */
-
-  /* Grids en pantallas medianas - 2 columnas por defecto */
   .features-grid,
   .impact-metrics,
   .team-grid,
   .donation-options,
   .pricing-grid {
-    /* Añadido pricing-grid para consistencia */
-    /* Aseguramos que haya al menos dos columnas si el espacio lo permite */
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .about-image {
+    order: 2;
+    margin-top: 2rem;
+  }
+
+  .about-text {
+    order: 1;
   }
 }
 
-/* ---------------------------------------------------- */
-
-/* Pantallas Pequeñas (Móviles) */
+/* --- 11.2 Mobiles --- */
 @media (max-width: 768px) {
-
-  /* Tipografía más pequeña para mejor legibilidad móvil */
   h1 {
     font-size: 2.5rem;
   }
@@ -922,42 +725,34 @@ textarea:focus {
     font-size: 1.8rem;
   }
 
-  /* Apilamiento forzado: Colapsa grids a una sola columna */
   .grid-2-columns,
   .grid-3-columns,
   .contact-us .container,
-  /* Asegura que la sección de contacto también se apile */
   .pricing-grid {
     grid-template-columns: 1fr;
   }
 
-  /* ------------------- Navegación Móvil ------------------- */
-
-  /* Ajuste de la altura del header */
   .header-content {
-    padding: 0.8rem var(--padding-x, 1rem);
+    padding: 0.8rem 1rem;
   }
 
   .main-nav .nav-list {
     display: none;
     flex-direction: column;
     gap: 0.5rem;
-    /* Espaciado más compacto en el menú móvil */
-    background: var(--white-color, #fff);
+    background: var(--white-color);
     position: absolute;
-    top: var(--header-height, 65px);
-    /* Usa variable de altura del header si existe */
+    top: 65px;
     right: 0;
     left: 0;
     padding: 1rem 0;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-    border-top: 1px solid var(--light-border, #eee);
+    border-top: 1px solid var(--light-border);
     z-index: 999;
   }
 
   .main-nav .nav-list.active {
     display: flex;
-    /* Muestra el menú cuando está activo (JS) */
   }
 
   .main-nav .nav-list li {
@@ -967,40 +762,29 @@ textarea:focus {
   .main-nav a {
     display: block;
     padding: 0.8rem 0;
-    /* Aumenta el área de clic para los dedos */
     width: 100%;
   }
 
-  /* El botón de toggle debe estar visible en móvil */
   .menu-toggle {
     display: block;
     cursor: pointer;
   }
 
-  /* ------------------- Elementos de Acción ------------------- */
-
-  /* Botones apilados en Hero */
   .hero-actions {
     flex-direction: column;
     align-items: center;
     gap: 1rem;
-    /* Añadido gap para espacio entre botones apilados */
   }
 
   .hero-actions .btn {
     width: 100%;
-    /* Ocupa todo el ancho del contenedor */
     max-width: 300px;
   }
 
-  /* Ocultar el botón de acción principal del header para simplificar */
   .header-actions {
     display: none;
   }
 
-  /* ------------------- Footer ------------------- */
-
-  /* Colapsa el grid del footer a una sola columna */
   .footer-content {
     grid-template-columns: 1fr;
     text-align: center;
@@ -1013,335 +797,70 @@ textarea:focus {
 
   .social-links {
     justify-content: center;
-    /* Centra los íconos sociales */
   }
-}
 
-/* ==============================
-   SECCIÓN "SOBRE NOSOTROS" (ABOUT US)
-   ============================== */
+  .about-section {
+    padding: 2rem 0.5rem;
+  }
 
-.about-section {
-  /* Fondo gris claro para alternar secciones con mayor contraste */
-  background-color: var(--light-gray-color, #f8f8f8);
-  padding: var(--section-padding, 4rem 1rem);
-  /* Aseguramos padding consistente */
-}
-
-/* Contenedor del contenido (texto e imagen) */
-.about-content {
-  display: grid;
-  /* Diseño de dos columnas. Usamos un valor fijo para el desktop */
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  align-items: center;
-}
-
-/* Contenedor de la imagen */
-.about-image {
-  /* Añadimos estilos para el contenedor para mejor manejo de la sombra */
-  display: block;
-  line-height: 0;
-  /* Elimina espacio debajo de la imagen si lo hay */
-}
-
-.about-image img {
-  width: 100%;
-  height: auto;
-  /* Usamos variables para bordes */
-  border-radius: var(--border-radius-lg, 10px);
-  /* Usamos una sombra sutil */
-  box-shadow: var(--shadow-medium, 0 10px 25px rgba(0, 0, 0, 0.1));
-  object-fit: cover;
-  /* Asegura que la imagen se vea bien si se usa height */
-}
-
-/* Estilos del texto */
-.about-text h3 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-  /* Títulos con el color primario y peso fuerte */
-  color: var(--primary-color);
-  font-weight: 700;
-}
-
-.about-text p {
-  margin-bottom: 1.5rem;
-  line-height: 1.6;
-  /* Mejora la legibilidad del texto */
-  color: var(--text-color, #555);
-}
-
-/* ------------------------------------- */
-/* RESPONSIVIDAD: Mobile y Tablet */
-/* ------------------------------------- */
-
-@media (max-width: 992px) {
   .about-content {
-    /* Pasa a una sola columna para dispositivos más pequeños */
-    grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.2rem;
   }
 
-  /* En el móvil, el texto va mejor primero */
   .about-image {
-    order: 2;
+    height: auto;
+    margin-top: 1.2rem;
   }
 
-  .about-text {
-    order: 1;
+  .about-image img {
+    max-height: 220px;
+    object-fit: cover;
+  }
+
+  .about-text h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.7rem;
+  }
+
+  .about-text p {
+    font-size: 0.98rem;
+    margin-bottom: 1rem;
   }
 }
 
 /* ==============================
-   SECCIÓN "LLAMADA A LA ACCIÓN" (CTA)
-   ============================== */
-.cta-section {
-  /* Usa variables para el degradado: más control y consistencia */
-  background: linear-gradient(135deg,
-      var(--primary-color),
-      var(--dark-primary-color, #00418a));
-  color: var(--white-color, #fff);
-  text-align: center;
-  /* Usa variable para el padding vertical si está definida */
-  padding: var(--cta-padding, 5rem 1rem);
-  border-radius: var(--border-radius-lg, 12px);
-  /* Asegura un ancho máximo para centrar el bloque de contenido si no usa .container */
-  max-width: var(--container-width, 1100px);
-  margin: 4rem auto;
-}
-
-.cta-section h2 {
-  font-size: 2.2rem;
-  color: var(--white-color, #fff);
-  /* Usa la variable de color blanco */
-  margin-bottom: 1.5rem;
-  /* Aplica peso de fuente consistente con los títulos principales */
-  font-weight: 700;
-}
-
-.cta-section p {
-  font-size: 1.1rem;
-  /* Usa un color blanco con transparencia para mejor mantenimiento */
-  color: rgba(var(--white-rgb, 255, 255, 255), 0.9);
-  max-width: 600px;
-  margin: 0 auto 2rem auto;
-}
-
-/* Estilo para el botón dentro del CTA (es fundamental definirlo aquí) */
-.cta-section .btn {
-  /* El botón debe contrastar fuertemente. Usamos el color secundario si no es el primary-outline */
-  background-color: var(--secondary-color);
-  color: var(--dark-color, #333);
-  margin-top: 1rem;
-  /* Asegura espacio entre el párrafo y el botón */
-}
-
-/* ==============================
-   SECCIÓN DE PRECIOS (PRICING)
-   ============================== */
-
-/* Contenedor principal de la sección, asegura que el fondo sea blanco */
-.pricing-section {
-  /* Usamos una variable de color de fondo si está definida, sino usamos blanco */
-  background-color: var(--white-color, #fff);
-  padding: var(--section-padding, 4rem 1rem);
-  /* Aseguramos padding consistente */
-}
-
-/* Define el layout de cuadrícula para las tarjetas */
-.pricing-grid {
-  display: grid;
-  /* Ajuste automático de columnas, ideal para responsividad */
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  align-items: stretch;
-  /* Asegura que todas las tarjetas tengan la misma altura */
-}
-
-/* Estilo base de cada tarjeta de precio */
-.pricing-card {
-  /* Usamos variables para bordes y radio */
-  border: 1px solid var(--border-color, #ddd);
-  border-radius: var(--border-radius-lg, 10px);
-  padding: 2.5rem 2rem;
-  text-align: center;
-  background-color: #fff;
-  /* Fondo explícito para consistencia */
-  transition: all 0.3s ease;
-}
-
-/* Efecto al pasar el ratón (Hover) */
-.pricing-card:hover {
-  transform: translateY(-8px);
-  /* Reduje ligeramente el desplazamiento */
-  /* Usamos una variable para el color de la sombra si está definida */
-  box-shadow: 0 15px 30px rgba(var(--shadow-rgb, 0, 0, 0), 0.15);
-}
-
-/* Título del plan */
-.pricing-card h3 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-  color: var(--heading-color, #333);
-}
-
-/* Estilo principal del valor del precio */
-.price {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--primary-color);
-  margin: 1rem 0;
-}
-
-/* Estilo para la unidad de tiempo (ej: /mes) */
-.price span {
-  font-size: 1rem;
-  font-weight: 400;
-  color: var(--text-muted, var(--gray-color, #666));
-  /* Usamos una variable más específica para texto atenuado */
-}
-
-/* Lista de características */
-.pricing-features {
-  list-style: none;
-  margin: 2rem 0;
-  padding: 0;
-  /* Aseguramos que no haya padding por defecto */
-}
-
-.pricing-features li {
-  padding: 0.75rem 0;
-  /* Usamos una variable para líneas divisorias */
-  border-bottom: 1px solid var(--light-border, #eee);
-  color: var(--text-color, #555);
-}
-
-.pricing-features li:last-child {
-  border-bottom: none;
-}
-
-/* ------------------------------------- */
-
-/* Estilo para la tarjeta destacada */
-.pricing-card--featured {
-  /* La tarjeta destacada debe tener una posición z-index más alta para manejar la sombra correctamente */
-  position: relative;
-  z-index: 10;
-
-  /* El borde de la tarjeta destacada usa el color primario */
-  border-color: var(--primary-color);
-  border-width: 2px;
-
-  /* Efecto de escala */
-  transform: scale(1.05);
-  box-shadow: 0 20px 40px rgba(var(--primary-rgb, 0, 0, 0), 0.2);
-  /* Sombra más pronunciada */
-}
-
-/* El botón dentro de la tarjeta destacada también se resalta */
-.pricing-card--featured .btn {
-  background: var(--primary-color);
-  color: var(--white-color, #fff);
-  /* Aseguramos que el botón no tenga el estilo outline */
-  border-color: var(--primary-color);
-}
-
-/* ==============================
-   SECCIÓN DE PREGUNTAS FRECUENTES (FAQ)
-   ============================== */
-
-/* Limita el ancho del contenido del FAQ y lo centra */
-.faq-section {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 2rem 1rem;
-  /* Asegura espacio interno */
-}
-
-.faq-item {
-  border-bottom: 1px solid var(--border-color, #ddd);
-  /* Usa una variable si la tienes */
-  padding: 1.5rem 0;
-}
-
-.faq-question {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--heading-color, #333);
-  /* Usa un color para el texto de la pregunta */
-  transition: color 0.3s ease;
-}
-
-.faq-question:hover {
-  color: var(--primary-color);
-  /* Realce al pasar el ratón */
-}
-
-/* Estilo del ícono de despliegue (el signo '+') */
-.faq-question::after {
-  content: "+";
-  /* Ícono de despliegue */
-  font-size: 1.8rem;
-  color: var(--primary-color);
-  transition: transform 0.3s ease;
-  line-height: 1;
-  /* Ayuda a centrar el signo '+' */
-}
-
-/* Contenedor de la respuesta, que se colapsa */
-.faq-answer {
-  max-height: 0;
-  /* Oculto por defecto: no ocupa espacio */
-  overflow: hidden;
-  /* Transiciones suaves para un efecto de acordeón */
-  transition: max-height 0.4s ease-in-out, padding 0.4s ease;
-}
-
-/* Estilos de la respuesta */
-.faq-answer p {
-  margin: 0;
-  line-height: 1.6;
-  color: var(--text-color, #555);
-}
-
-/* Estilos cuando el FAQ está activo (se añade con JavaScript) */
-
-/* Muestra la respuesta */
-.faq-item.active .faq-answer {
-  max-height: 500px;
-  /* Suficientemente grande para cualquier respuesta */
-  padding-top: 1rem;
-}
-
-/* Gira el ícono '+' a 'x' (o un signo menos) cuando está activo */
-.faq-item.active .faq-question::after {
-  content: "-";
-  /* Cambia el signo a un guion para indicar que está abierto */
-  transform: rotate(0deg);
-}
-
-/* ==============================
-    BOTÓN FLOTANTE DE WHATSAPP
-   ============================== */
+  12. WHATSAPP FLOAT BUTTON
+  ============================== */
 .whatsapp-float {
   position: fixed;
-  width: 60px;
-  height: 60px;
-  bottom: 20px;
-  right: 20px;
-  background-color: #25d366;
+  width: 64px;
+  height: 64px;
+  bottom: 24px;
+  right: 24px;
+  background: linear-gradient(135deg, #25d366 70%, #128c7e 100%);
   border-radius: 50%;
-  text-align: center;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  z-index: 1000;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.08) translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.22);
 }
 
 .whatsapp-float img {
-  width: 35px;
-  margin-top: 12px;
+  width: 36px;
+  height: 36px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.12));
+  transition: filter 0.2s;
+}
+
+.whatsapp-float:active {
+  transform: scale(0.97);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
