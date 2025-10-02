@@ -3,17 +3,22 @@
 // Script: enviar-formulario.php
 // ============================
 
-// Dirección de correo destino (CAMBIA si deseas otro)
+// Dirección de correo destino
 $destinatario = "corporaciondicrart@gmail.com";
 
+// Función para limpiar y validar entradas
+function limpiar($dato) {
+    return htmlspecialchars(trim($dato), ENT_QUOTES, 'UTF-8');
+}
+
 // Verificar si el formulario fue enviado
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
-    // Capturar datos y sanitizar
-    $nombre   = htmlspecialchars(trim($_POST["nombre"]));
-    $email    = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
-    $telefono = htmlspecialchars(trim($_POST["telefono"]));
-    $mensaje  = htmlspecialchars(trim($_POST["mensaje"]));
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+    // Capturar y sanitizar datos
+    $nombre   = limpiar($_POST["nombre"] ?? "");
+    $email    = filter_var(trim($_POST["email"] ?? ""), FILTER_SANITIZE_EMAIL);
+    $telefono = limpiar($_POST["telefono"] ?? "");
+    $mensaje  = limpiar($_POST["mensaje"] ?? "");
 
     // Validación básica
     if (empty($nombre) || empty($email) || empty($mensaje)) {
@@ -26,21 +31,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
+    // Validar longitud de mensaje
+    if (strlen($mensaje) < 10) {
+        echo "El mensaje debe tener al menos 10 caracteres.";
+        exit;
+    }
+
     // Construcción del mensaje
     $asunto = "Nuevo mensaje desde la web - Corporación Dicrart";
-    $cuerpo = "
-    Has recibido un nuevo mensaje desde el formulario de contacto:
-
-    Nombre: $nombre
-    Email: $email
-    Teléfono: $telefono
-    Mensaje:
-    $mensaje
-    ";
+    $cuerpo = "Has recibido un nuevo mensaje desde el formulario de contacto:\n\n";
+    $cuerpo .= "Nombre: $nombre\n";
+    $cuerpo .= "Email: $email\n";
+    $cuerpo .= "Teléfono: $telefono\n";
+    $cuerpo .= "Mensaje:\n$mensaje\n";
 
     // Encabezados del correo
-    $headers = "From: $nombre <$email>\r\n";
+    $headers = "From: Corporación Dicrart <no-reply@dicrartweb.com>\r\n";
     $headers .= "Reply-To: $email\r\n";
+    $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
     $headers .= "X-Mailer: PHP/" . phpversion();
 
     // Enviar correo

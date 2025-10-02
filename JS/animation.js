@@ -1,6 +1,6 @@
 /* ==============================
-   animation.js
-   ============================== */
+  animation.js (Mejorado)
+  ============================== */
 
 // ===== CONTADOR ANIMADO PARA MÉTRICAS =====
 const counters = document.querySelectorAll(".metric-item h3");
@@ -10,31 +10,38 @@ const counterOptions = {
   rootMargin: "0px 0px -50px 0px"
 };
 
-const counterObserver = new IntersectionObserver(function(entries, observer) {
+const animateCounter = (counter) => {
+  const target = parseInt(counter.dataset.target || counter.innerText, 10);
+  let current = 0;
+  const duration = 1200; // ms
+  const startTime = performance.now();
+
+  const step = (now) => {
+   const progress = Math.min((now - startTime) / duration, 1);
+   current = Math.floor(progress * target);
+   counter.innerText = current;
+   if (progress < 1) {
+    requestAnimationFrame(step);
+   } else {
+    counter.innerText = target;
+   }
+  };
+
+  requestAnimationFrame(step);
+};
+
+const counterObserver = new IntersectionObserver((entries, observer) => {
   entries.forEach(entry => {
-    if (!entry.isIntersecting) return;
-
-    const counter = entry.target;
-    const target = +counter.innerText; // número final
-    let start = 0;
-    const increment = target / 100; // velocidad del conteo
-
-    const updateCounter = () => {
-      start += increment;
-      if (start < target) {
-        counter.innerText = Math.ceil(start);
-        requestAnimationFrame(updateCounter);
-      } else {
-        counter.innerText = target;
-      }
-    };
-
-    updateCounter();
-    observer.unobserve(counter);
+   if (entry.isIntersecting) {
+    animateCounter(entry.target);
+    observer.unobserve(entry.target);
+   }
   });
 }, counterOptions);
 
 counters.forEach(counter => {
+  // Permite usar data-target para mayor flexibilidad
+  counter.setAttribute('aria-label', 'Contador animado');
   counterObserver.observe(counter);
 });
 
@@ -43,14 +50,17 @@ const animatedSections = document.querySelectorAll(".section-animate");
 
 animatedSections.forEach(section => {
   section.classList.add("hidden");
+  section.setAttribute('aria-hidden', 'true');
 });
 
 const sectionObserver = new IntersectionObserver((entries, observer) => {
   entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-      observer.unobserve(entry.target);
-    }
+   if (entry.isIntersecting) {
+    entry.target.classList.add("visible");
+    entry.target.classList.remove("hidden");
+    entry.target.setAttribute('aria-hidden', 'false');
+    observer.unobserve(entry.target);
+   }
   });
 }, { threshold: 0.2 });
 
