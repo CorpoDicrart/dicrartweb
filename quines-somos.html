@@ -5,12 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiénes Somos | Corporación Dicrart</title>
-    <meta name="description" content="Conoce la misión, visión, valores y equipo de Corporación Dicrart. ONG dedicada a la inclusión y desarrollo de personas con discapacidad.">
+    <meta name="description"
+        content="Conoce la misión, visión, valores y equipo de Corporación Dicrart. ONG dedicada a la inclusión y desarrollo de personas con discapacidad.">
     <meta name="author" content="Corporación Dicrart">
 
     <!-- Open Graph / Social Meta -->
     <meta property="og:title" content="Quiénes Somos | Corporación Dicrart">
-    <meta property="og:description" content="Transformamos vidas a través de la inclusión y el arte. Descubre nuestro equipo y valores.">
+    <meta property="og:description"
+        content="Transformamos vidas a través de la inclusión y el arte. Descubre nuestro equipo y valores.">
     <meta property="og:image" content="ASSETS/img/og-image.jpg">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://dicrart.org/quines-somos.html">
@@ -18,13 +20,16 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Quiénes Somos | Corporación Dicrart">
-    <meta name="twitter:description" content="Transformamos vidas a través de la inclusión y el arte. Descubre nuestro equipo y valores.">
+    <meta name="twitter:description"
+        content="Transformamos vidas a través de la inclusión y el arte. Descubre nuestro equipo y valores.">
     <meta name="twitter:image" content="ASSETS/img/og-image.jpg">
 
     <link rel="icon" href="ASSETS/img/logo/logo-sin-fondo.png" type="image/png">
 
     <!-- Tipografías -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap"
+        rel="stylesheet">
 
     <!-- Estilos -->
     <link rel="stylesheet" href="ASSETS/CSS/style.css">
@@ -114,36 +119,62 @@
         </div>
     </section>
 
-    <!-- EQUIPO -->
-    <section class="our-team">
-        <div class="container">
-            <h2>Nuestro Equipo</h2>
-            <p class="section-description">Un grupo de profesionales y voluntarios comprometidos con la inclusión y el
-                desarrollo humano.</p>
+    <!-- ... MIENBROS DEL EQUIPO DE DOCENTES ... -->
 
-            <div class="team-grid">
-                <div class="team-member">
-                    <img src="ASSETS/img/DOCENTES/Liliana Amador Quiroga.webp" alt="Liliana Amador Quiroga">
-                    <h4>Liliana Amador Quiroga</h4>
-                    <span>Docente de Diseño de Modas</span>
-                </div>
-                <div class="team-member">
-                    <img src="ASSETS/img/DOCENTES/Javier Salas Acosta.webp" alt="Javier Salas Acosta">
-                    <h4>Javier Salas Acosta</h4>
-                    <span>Docente de Diseño de Calzado</span>
-                </div>
-                <div class="team-member">
-                    <img src="ASSETS/img/DOCENTES/Javier Salas Gonzalez.webp" alt="Javier Salas González">
-                    <h4>Javier Salas González</h4>
-                    <span>Docente de Aerografía y Artes Plásticas</span>
-                </div>
-                <div class="team-member">
-                    <img src="ASSETS/img/DOCENTES/Luisa Fernada Gutierrez Arias.webp" alt="Luisa Fernanda Gutiérrez Arias">
-                    <h4>Luisa Fernanda Gutiérrez Arias</h4>
-                    <span>Aprendiz de Dibujo Tradicional</span>
-                </div>
-            </div>
-        </div>
+    <!-- LISTADO DE MIEMBROS DEL EQUIPO -->
+    <div class="contenedor-miembros">
+        <ul class="lista-miembros" role="list">
+            <!-- MIEMBRO DEL EQUIPO 1 -->
+            <li class="miembro-equipo" tabindex="0" role="listitem">
+                <figure>
+                    <img src="ASSETS/img/DOCENTES/Liliana Amador Quiroga.webp" alt="Retrato de Liliana Amador Quiroga"
+                        width="300" height="300" loading="lazy" decoding="async" class="retrato-miembro">
+                    <figcaption>
+                        <h3 class="nombre-miembro">Liliana Amador Quiroga</h3>
+                        <p class="cargo-miembro">Docente de Diseño de Modas</p>
+                    </figcaption>
+                </figure>
+            </li>
+
+            <!-- MIEMBRO DEL EQUIPO 2 -->
+            <li class="miembro-equipo" tabindex="0" role="listitem">
+                <figure>
+                    <img src="ASSETS/img/DOCENTES/Javier Salas Acosta.webp" alt="Retrato de Javier Salas Acosta"
+                        width="300" height="300" loading="lazy" decoding="async" class="retrato-miembro">
+                    <figcaption>
+                        <h3 class="nombre-miembro">Javier Salas Acosta</h3>
+                        <p class="cargo-miembro">Docente de Diseño de Calzado</p>
+                    </figcaption>
+                </figure>
+            </li>
+
+            <!-- MIEMBRO DEL EQUIPO 3 -->
+            <li class="miembro-equipo" tabindex="0" role="listitem">
+                <figure>
+                    <img src="ASSETS/img/DOCENTES/Javier Salas Gonzalez.webp" alt="Retrato de Javier Salas González"
+                        width="300" height="300" loading="lazy" decoding="async" class="retrato-miembro">
+                    <figcaption>
+                        <h3 class="nombre-miembro">Javier Salas González</h3>
+                        <p class="cargo-miembro">Docente de Aerografía y Artes Plásticas</p>
+                    </figcaption>
+                </figure>
+            </li>
+
+            <!-- MIEMBRO DEL EQUIPO 4 (Este debería ir DENTRO del <ul>) -->
+            <li class="miembro-equipo" tabindex="0" role="listitem">
+                <figure>
+                    <img src="ASSETS/img/DOCENTES/Luisa Fernada Gutierrez Arias.webp"
+                        alt="Retrato de Luisa Ferrenada Gutierrez" width="300" height="300" loading="lazy"
+                        decoding="async" class="retrato-miembro">
+                    <figcaption>
+                        <h3 class="nombre-miembro">Luisa Ferrenada Gutierrez</h3>
+                        <p class="cargo-miembro">Docente de Dibujo Tradicional</p>
+                    </figcaption>
+                </figure>
+            </li>
+        </ul>
+    </div>
+    </div>
     </section>
 
     <!-- CTA -->
@@ -162,10 +193,14 @@
                 <h3>Corporación Dicrart</h3>
                 <p>Talento sin Límites: educación e inclusión por medio del arte.</p>
                 <div class="social-links">
-                    <a href="https://www.facebook.com/corpodicrart" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/copdicrart" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.tiktok.com/@dicrart" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-                    <a href="https://open.spotify.com/show/0OwZU8q6stdSqLQH1O7Heh?si=0EQDOmpPRpGjB6ziLUdTzg&nd=1&dlsi=9ce97a72bac94211" target="_blank" rel="noopener" aria-label="Spotify Podcast"><i class="fab fa-spotify"></i></a>
+                    <a href="https://www.facebook.com/corpodicrart" target="_blank" rel="noopener"
+                        aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/copdicrart" target="_blank" rel="noopener"
+                        aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@dicrart" target="_blank" rel="noopener" aria-label="TikTok"><i
+                            class="fab fa-tiktok"></i></a>
+                    <a href="https://open.spotify.com/show/0OwZU8q6stdSqLQH1O7Heh?si=0EQDOmpPRpGjB6ziLUdTzg&nd=1&dlsi=9ce97a72bac94211"
+                        target="_blank" rel="noopener" aria-label="Spotify Podcast"><i class="fab fa-spotify"></i></a>
                 </div>
             </div>
             <div class="footer-section">

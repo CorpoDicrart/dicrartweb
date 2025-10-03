@@ -267,211 +267,256 @@ a:focus,
   outline: none;
   z-index: 1001;
 }
-/* ==============================
-    EQUIPO / DOCENTES
-   ============================== */
+/* ========================================= */
+/* Estilos para la Sección "Nuestro Equipo"  */
+/* ========================================= */
 
-.team-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: var(--spacing-lg);
-  margin-top: var(--spacing-lg);
-  align-items: stretch;
+/* Contenedor principal de la sección */
+.seccion-equipo {
+    padding: 80px 0; /* Espaciado superior e inferior para la sección */
+    background-color: #f8f9fa; /* Un fondo gris muy claro para diferenciar la sección */
+    font-family: 'Arial', sans-serif; /* Fuente general, puedes cambiarla por una Google Font */
+    color: #343336; /* Color de texto principal */
 }
 
-/* Quitar la figura obalada: Elimina border-radius en la imagen */
-.team-member {
-  background: linear-gradient(135deg, #f7f7f7 60%, #e3f0ff 100%);
-  border-radius: var(--border-radius-lg);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.10);
-  text-align: center;
-  padding: 2.2rem 1.5rem 1.7rem 1.5rem;
-  transition: transform 0.3s, box-shadow 0.3s;
-  position: relative;
-  overflow: hidden;
+/* Contenedor para centrar el contenido y limitar el ancho */
+.contenedor {
+    max-width: 1200px; /* Ancho máximo del contenido */
+    margin: 0 auto; /* Centrar el contenedor */
+    padding: 0 20px; /* Espaciado lateral */
 }
 
-/* Presentación de docentes: nombre encima de la imagen, imagen tamaño adecuado y responsive */
-.team-member {
-  background: linear-gradient(135deg, #f7f7f7 60%, #e3f0ff 100%);
-  border-radius: var(--border-radius-lg);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.10);
-  text-align: center;
-  padding: 1.5rem 1rem 1.2rem 1rem;
-  transition: transform 0.3s, box-shadow 0.3s;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* Cabecera de la sección (Título y descripción) */
+.cabecera-seccion {
+    text-align: center; /* Centrar todo el texto de la cabecera */
+    margin-bottom: 60px; /* Espacio debajo de la cabecera */
 }
 
-/* Campo para los cuatro docentes: grid de 4 columnas en escritorio estilo universidad */
-.team-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--spacing-lg);
-  margin-top: var(--spacing-lg);
-  align-items: stretch;
-  background: #f5f8fa;
-  border-radius: 12px;
-  box-shadow: 0 6px 24px rgba(0,0,0,0.07);
-  padding: 2rem 1rem;
+.titulo-seccion {
+    font-size: 2.8em; /* Tamaño grande para el título */
+    color: #212529; /* Un color oscuro para el título */
+    margin-bottom: 15px;
+    position: relative; /* Para el pseudo-elemento de la línea */
+    display: inline-block; /* Para que la línea se centre correctamente */
 }
 
-/* Presentación estilo universidad */
-.team-member {
-  background: linear-gradient(120deg, #e9f1fb 70%, #f7f7f7 100%);
-  border-radius: 10px;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
-  text-align: center;
-  padding: 1.2rem 0.7rem 1.1rem 0.7rem;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 1px solid #dbeafe;
+/* Opcional: Línea decorativa debajo del título */
+.titulo-seccion::after {
+    content: '';
+    display: block;
+    width: 70px; /* Ancho de la línea */
+    height: 4px; /* Grosor de la línea */
+    background-color: #007bff; /* Color de acento (azul) */
+    margin: 15px auto 0; /* Centrar la línea y espacio superior */
+    border-radius: 2px; /* Bordes ligeramente redondeados */
 }
 
-/* Nombre encima de la imagen */
-.team-member h4 {
-  position: absolute;
-  top: 0.7rem;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 1.08rem;
-  font-weight: 700;
-  color: var(--primary-color);
-  margin: 0;
-  padding: 0.18rem 0.7rem;
-  background: rgba(255,255,255,0.96);
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-  letter-spacing: 0.7px;
-  z-index: 2;
-  transition: color 0.3s;
-  border: 1px solid #e0e7ef;
+.descripcion-seccion {
+    font-size: 1.15em; /* Tamaño de fuente para la descripción */
+    color: #6c757d; /* Un color gris más suave para la descripción */
+    max-width: 700px; /* Limitar el ancho de la descripción para mejor legibilidad */
+    margin: 0 auto; /* Centrar la descripción */
+    line-height: 1.6; /* Espaciado entre líneas */
 }
 
-.team-member:hover h4 {
-  color: var(--secondary-color);
+/* Contenedor de la lista de miembros */
+.contenedor-miembros {
+    margin-top: 40px; /* Espacio superior para el contenedor de los miembros */
 }
 
-/* Imagen docente: tamaño adecuado para 4 docentes */
-.team-member img {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  margin-bottom: 0.8rem;
-  border: 3px solid var(--primary-color);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.09);
-  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
-  background: #fff;
+.lista-miembros {
+    display: grid; /* Usar CSS Grid para el layout */
+    /* Columnas responsivas: auto-fit crea tantas columnas como quepan,
+       minmax(280px, 1fr) asegura que cada columna tenga al menos 280px */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px; /* Espacio entre las tarjetas de los miembros */
+    list-style: none; /* Eliminar los estilos de lista por defecto */
+    padding: 0; /* Eliminar padding por defecto */
+    margin: 0; /* Eliminar margin por defecto */
+    justify-content: center; /* Centrar las tarjetas si no llenan la última fila */
 }
 
-.team-member:hover img {
-  transform: scale(1.08) rotate(-2deg);
-  border-color: var(--secondary-color);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.14);
+/* Estilo para cada tarjeta de miembro del equipo */
+.miembro-equipo {
+    background-color: #ffffff; /* Fondo blanco para las tarjetas */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Sombra suave para un efecto elevado */
+    padding: 30px; /* Espaciado interno de la tarjeta */
+    text-align: center; /* Centrar el contenido de la tarjeta */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave para efectos hover */
+    cursor: pointer; /* Indicar que la tarjeta es interactiva */
+    height: 100%; /* Asegura que todas las tarjetas tengan la misma altura si el contenido lo permite */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-/* Rol y bio */
-.team-member .member-role {
-  display: block;
-  font-size: 0.95rem;
-  color: var(--secondary-color);
-  margin-bottom: 0.6rem;
-  position: relative;
-  font-weight: 600;
-  letter-spacing: 0.3px;
+/* Efecto hover en la tarjeta */
+.miembro-equipo:hover {
+    transform: translateY(-8px); /* Levantar la tarjeta ligeramente */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12); /* Aumentar la sombra */
 }
 
-.team-member .member-bio {
-  font-size: 0.95rem;
-  color: var(--text-color);
-  margin-top: 0.6rem;
-  line-height: 1.6;
-  min-height: 40px;
-  opacity: 0.92;
-  padding: 0 0.5rem;
+/* Estilo para la figura (imagen y leyenda) */
+.miembro-equipo figure {
+    margin: 0; /* Eliminar márgenes por defecto de figure */
+    padding: 0; /* Eliminar padding por defecto de figure */
+    display: flex; /* Usar flexbox para alinear imagen y texto */
+    flex-direction: column; /* Apilar imagen y texto */
+    align-items: center; /* Centrar horizontalmente */
 }
 
-/* Social icons for team members */
-.team-member .member-social {
-  margin-top: 0.8rem;
-  display: flex;
-  justify-content: center;
-  gap: 0.7rem;
+/* Estilo para la imagen del retrato */
+.retrato-miembro {
+    width: 160px; /* Ancho del retrato */
+    height: 160px; /* Alto del retrato (igual que el ancho para hacerlo redondo) */
+    border-radius: 50%; /* Hacer la imagen perfectamente redonda */
+    object-fit: cover; /* Asegurar que la imagen cubra el área sin distorsionarse */
+    border: 5px solid #007bff; /* Borde de color de acento alrededor de la imagen */
+    margin-bottom: 25px; /* Espacio debajo de la imagen */
+    box-shadow: 0 0 0 8px rgba(0, 123, 255, 0.15); /* Un segundo "anillo" de sombra suave */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transición para el borde y sombra */
 }
 
-.team-member .member-social a {
-  color: var(--primary-color);
-  font-size: 1.1rem;
-  transition: color 0.3s, transform 0.3s;
+/* Efecto hover en la imagen dentro de la tarjeta */
+.miembro-equipo:hover .retrato-miembro {
+    border-color: #0056b3; /* Cambiar el color del borde al pasar el ratón */
+    box-shadow: 0 0 0 8px rgba(0, 123, 255, 0.25);
 }
 
-.team-member .member-social a:hover {
-  color: var(--secondary-color);
-  transform: translateY(-2px) scale(1.1);
+/* Nombre del miembro */
+.nombre-miembro {
+    font-size: 1.7em; /* Tamaño del nombre */
+    color: #212529; /* Color oscuro para el nombre */
+    margin-bottom: 8px; /* Espacio debajo del nombre */
+    font-weight: 600; /* Negrita */
 }
 
-/* Línea decorativa inferior */
-.team-member::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  transform: translateX(-50%);
-  width: 80%;
-  height: 6px;
-  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-  border-radius: 3px;
-  opacity: 0.18;
-  transition: opacity 0.3s;
+/* Cargo del miembro */
+.cargo-miembro {
+    font-size: 1.1em; /* Tamaño del cargo */
+    color: #6c757d; /* Color gris suave para el cargo */
+    font-style: italic; /* Texto en cursiva */
+    margin: 0; /* Eliminar márgenes por defecto */
 }
 
-.team-member:hover {
-  transform: translateY(-10px) scale(1.03);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.16);
+/* Estilos de enfoque para accesibilidad (navegación por teclado) */
+.miembro-equipo:focus {
+    outline: 3px solid #007bff; /* Borde azul para indicar el foco */
+    outline-offset: 5px; /* Separación del borde de enfoque del elemento */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1), 0 0 0 5px rgba(0, 123, 255, 0.4); /* Combinar sombra con un anillo de foco */
+    transform: translateY(-4px); /* También un ligero levantamiento al enfocar */
 }
 
-.team-member:hover::after {
-  opacity: 0.32;
-}
+/* ============================ */
+/* Media Queries para Responsividad */
+/* ============================ */
 
-/* Responsive para tablets y móviles */
+/* Tabletas y pantallas medianas */
 @media (max-width: 992px) {
-  .team-grid {
-    grid-template-columns: repeat(2, 1fr);
-    padding: 1.2rem 0.5rem;
-  }
-  .team-member img {
-    width: 80px;
-    height: 80px;
-  }
+    .seccion-equipo {
+        padding: 70px 0;
+    }
+
+    .titulo-seccion {
+        font-size: 2.4em;
+    }
+
+    .descripcion-seccion {
+        font-size: 1.05em;
+    }
+
+    .lista-miembros {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adaptar columnas */
+        gap: 25px;
+    }
+
+    .miembro-equipo {
+        padding: 25px;
+    }
+
+    .retrato-miembro {
+        width: 140px;
+        height: 140px;
+        margin-bottom: 20px;
+        border-width: 4px; /* Ajustar el grosor del borde */
+    }
+
+    .nombre-miembro {
+        font-size: 1.5em;
+    }
+
+    .cargo-miembro {
+        font-size: 1em;
+    }
 }
 
-@media (max-width: 600px) {
-  .team-grid {
-    grid-template-columns: 1fr;
-    gap: var(--spacing-md);
-    padding: 0.5rem 0.2rem;
-  }
-  .team-member {
-    padding: 0.7rem 0.3rem;
-  }
-  .team-member img {
-    width: 60px;
-    height: 60px;
-  }
-  .team-member h4 {
-    font-size: 0.85rem;
-    padding: 0.10rem 0.3rem;
-    top: 0.3rem;
-  }
+/* Teléfonos móviles y pantallas pequeñas */
+@media (max-width: 768px) {
+    .seccion-equipo {
+        padding: 50px 0;
+    }
+
+    .cabecera-seccion {
+        margin-bottom: 40px;
+    }
+
+    .titulo-seccion {
+        font-size: 2em;
+    }
+
+    .titulo-seccion::after {
+        width: 50px;
+        height: 3px;
+        margin-top: 10px;
+    }
+
+    .descripcion-seccion {
+        font-size: 0.95em;
+        max-width: 90%;
+    }
+
+    .lista-miembros {
+        grid-template-columns: 1fr; /* Una sola columna en pantallas pequeñas */
+        gap: 20px;
+    }
+
+    .miembro-equipo {
+        padding: 20px;
+    }
+
+    .retrato-miembro {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 15px;
+        border-width: 3px;
+    }
+
+    .nombre-miembro {
+        font-size: 1.4em;
+    }
+
+    .cargo-miembro {
+        font-size: 0.9em;
+    }
 }
-  }
+
+@media (max-width: 480px) {
+    .contenedor {
+        padding: 0 15px;
+    }
+
+    .seccion-equipo {
+        padding: 40px 0;
+    }
+
+    .titulo-seccion {
+        font-size: 1.7em;
+    }
+
+    .descripcion-seccion {
+        font-size: 0.9em;
+    }
 }
 
 /* ==============================
@@ -1039,34 +1084,118 @@ textarea:focus {
   ============================== */
 .whatsapp-float {
   position: fixed;
-  width: 64px;
-  height: 64px;
-  bottom: 24px;
-  right: 24px;
-  background: linear-gradient(135deg, #25d366 70%, #128c7e 100%);
+  width: 60px;
+  height: 60px;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25d366;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
-  z-index: 1000;
-  transition: transform 0.2s, box-shadow 0.2s;
-  cursor: pointer;
+  text-align: center;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  z-index: 100;
+  }
+.whatsapp-float img {
+  width: 35px;
+  margin-top: 12px;
 }
 
 .whatsapp-float:hover {
   transform: scale(1.08) translateY(-4px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.22);
-}
-
-.whatsapp-float img {
-  width: 36px;
-  height: 36px;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.12));
-  transition: filter 0.2s;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.22); 
 }
 
 .whatsapp-float:active {
   transform: scale(0.97);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Estilo para la sección de Convenios Institucionales */
+.convenios-section {
+    background-color: #f8f9fa;
+    padding: 60px 0;
+    text-align: center;
+}
+
+.convenios-header {
+    margin-bottom: 40px;
+}
+
+.convenios-header h2 {
+    color: #2c3e50;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.convenios-header p {
+    color: #7f8c8d;
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.instituciones-title {
+    color: #3498db;
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.instituciones-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.institucion-item {
+    background-color: white;
+    border-radius: 10px;
+    padding: 25px;
+    width: calc(33.333% - 30px);
+    min-width: 300px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.institucion-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.institucion-logo {
+    height: 80px;
+    margin-bottom: 20px;
+}
+
+.institucion-logo img {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.institucion-nombre {
+    color:#2c3e50; 
+    font-weight: 600;
+    font-size: 1.25rem;
+    margin-top: 15px;
+}
+.instituciones-vinculadas {
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+}
+.instituciones-vinculadas ul {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.instituciones-vinculadas {
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+}
+.instituciones-vinculadas ul {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
