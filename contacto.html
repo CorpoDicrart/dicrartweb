@@ -11,7 +11,7 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:title" content="Contacto | Corporación Dicrart">
     <meta property="og:description" content="Conoce cómo contactarnos y únete a nuestra misión de inclusión a través del arte.">
-    <meta property="og:image" content="assets/img/og-image.jpg">
+    <meta property="og:image" content="ASSETS/img/LOGO/logo-sin-fondo.png">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://dicrartweb.com/contacto.html">
 
@@ -25,16 +25,24 @@
 
     <!-- Tipografías -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-
     <!-- Estilos -->
     <link rel="stylesheet" href="ASSETS/CSS/style.css">
     <link rel="stylesheet" href="ASSETS/CSS/responsive.css">
 
     <!-- Iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="ASSETS/CSS/animations.css">
 
     <!-- SEO: Canonical -->
     <link rel="canonical" href="https://dicrartweb.com/contacto.html">
+    <!-- Performance: Preconnect for Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Performance: Preload key resources -->
+    <link rel="preload" as="image" href="assets/img/hero-contacto.webp">
+    <link rel="preload" as="image" href="assets/img/logo/logo-sin-fondo.png">
+    <link rel="preload" as="image" href="assets/img/logo/logo.png">
+    <link rel="preload" as="image" href="assets/img/LOGO/icono-whatsapp.png">
 </head>
 
 <body>
@@ -130,26 +138,6 @@
         <img src="ASSETS/img/LOGO/icono-whatsapp.png" alt="WhatsApp" />
     </a>
     
-    <style>
-        .whatsapp-float {
-            position: fixed;
-            width: 60px;
-            height: 60px;
-            bottom: 20px;
-            right: 20px;
-            background-color: #25d366;
-            border-radius: 50%;
-            text-align: center;
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-            z-index: 100;
-        }
-
-        .whatsapp-float img {
-            width: 35px;
-            margin-top: 12px;
-        }
-    </style>
-
     <!-- FOOTER -->
     <footer class="main-footer">
         <div class="container footer-content">
@@ -188,8 +176,8 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/animation.js"></script>
+    <script src="JS/main.js"></script>
+    <script src="JS/animation.js"></script>
 </body>
 
 </html>
